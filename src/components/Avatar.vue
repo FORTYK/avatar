@@ -50,19 +50,21 @@ export default {
     var target = document.getElementById('avatar');
 
     for (let i = 0; i < LlamaMeta.length; i++) {
-      const piece = LlamaMeta[i];
-      if (piece.data.length == 0) continue;
+      const module = LlamaMeta[i];
+      if (module.data.length == 0) continue;
 
-      const picked = new AvatarModule(piece.label, piece.data[0]);
+      const picked = new AvatarModule(module.label, module.data[0]);
 
       this.avatar.push(picked);
 
       var el = document.createElement('object');
-      el.setAttribute('id', `avatar-${piece.label}`);
+      el.setAttribute('id', `avatar-${module.label}`);
       target?.appendChild(el);
 
-      this.loadAvatar();
+
     }
+
+    this.randomize();
   },
   components: {
     SwatchPicker,
@@ -96,6 +98,18 @@ export default {
         el.setAttribute('width', String(module.meta.width));
         el.setAttribute('height', String(module.meta.height));
       }
+    },
+    randomize() {
+      for (let i = 0; i < LlamaMeta.length; i++) {
+        const module = LlamaMeta[i];
+        if (module.data.length == 0) continue;
+
+        const randomPiece = Math.floor(Math.random() * module.data.length);
+        const picked = new AvatarModule(module.label, module.data[randomPiece]);
+
+        this.avatar[i] = picked;
+      }
+      this.loadAvatar();
     }
   }
 }

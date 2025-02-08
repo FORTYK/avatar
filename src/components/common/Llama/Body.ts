@@ -1,20 +1,22 @@
 import { type AvatarModuleMeta } from "../AvatarModuleMeta";
 import thumb from '/src/assets/thumb.svg';
-import boll from '/src/assets/boll.svg';
+import happy from '/src/assets/happy.svg';
 
 const module: AvatarModuleMeta[] = 
 [
   {
+    title: "regular",
     src: thumb,
     y: 100,
     width: 92,
     height: 156
   },
   {
-    src: boll,
+    title: "happy",
+    src: happy,
     y: 100,
-    width: 181,
-    height: 181
+    width: 121,
+    height: 156
   }
 ];
 

@@ -6,14 +6,14 @@ const module: AvatarModuleMeta[] =
   {
     title: "village idiot",
     src: hair,
-    y: 100,
+    y: 99,
     width: 92,
     height: 156
   },
   {
     title: 'baldie',
     src: '',
-    y: 100,
+    y: 99,
     width: 92,
     height: 156
   }

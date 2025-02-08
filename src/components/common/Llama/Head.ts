@@ -6,7 +6,7 @@ const module: AvatarModuleMeta[] =
   {
     title: "regular",
     src: head,
-    y: 100,
+    y: 99,
     width: 96,
     height: 156
   }
