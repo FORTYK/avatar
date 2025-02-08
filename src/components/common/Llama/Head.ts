@@ -1,13 +1,15 @@
 import { type AvatarModuleMeta } from '../AvatarModuleMeta'
+import head from '/src/assets/head.svg';
 
-const head: AvatarModuleMeta[] = 
+const module: AvatarModuleMeta[] = 
 [
   {
-    src: 'src/assets/head.svg',
+    title: "regular",
+    src: head,
     y: 100,
     width: 96,
     height: 156
   }
 ];
 
-export default head;
+export default module;

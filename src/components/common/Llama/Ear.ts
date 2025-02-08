@@ -1,13 +1,15 @@
 import { type AvatarModuleMeta } from '../AvatarModuleMeta'
+import ears from '/src/assets/ears.svg';
 
-const ear: AvatarModuleMeta[] = 
+const module: AvatarModuleMeta[] = 
 [
   {
-    src: 'src/assets/ears.svg',
+    title: "regular",
+    src: ears,
     y: 30,
     width: 106,
     height: 91
   }
 ];
 
-export default ear;
+export default module;

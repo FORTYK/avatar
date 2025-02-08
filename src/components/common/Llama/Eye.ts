@@ -1,25 +1,31 @@
 import { type AvatarModuleMeta } from '../AvatarModuleMeta'
+import curious from '/src/assets/curious.svg';
+import scheming from '/src/assets/scheming.svg';
+import tired from '/src/assets/tired.svg';
 
-const eyes: AvatarModuleMeta[] = 
+const module: AvatarModuleMeta[] = 
 [
   {
-    src: 'src/assets/curious.svg',
+    title: "curious",
+    src: curious,
     y: 129,
     width: 100,
     height: 33
   },
   {
-    src: 'src/assets/angry.svg',
+    title: "scheming",
+    src: scheming,
     y: 132,
     width: 124,
     height: 45
   },
   {
-    src: 'src/assets/tired.svg',
+    title: "tired",
+    src: tired,
     y: 129,
     width: 100,
     height: 42
   } 
 ];
 
-export default eyes;
+export default module;

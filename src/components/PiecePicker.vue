@@ -6,7 +6,7 @@
           <object :data="module.data[0].src" height="40" width="40"></object>
         </button>
         <div class="pieces">
-          <div class="piece" v-for="(piece, index) in module.data">
+          <div class="piece" v-for="(piece, index) in module.data" :title=piece.title>
             <object :data="piece.src" height="60px" width="60px"></object>
             <button @click="handleClick(index)"></button>
           </div>

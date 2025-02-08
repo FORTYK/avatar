@@ -6,7 +6,7 @@ import Eye from './Eye';
 import Mouth from './Mouth';
 import Hat from './Hat';
 
-const Llama: AvatarModules[] = [
+const LlamaMeta: AvatarModules[] = [
   {label: "body", data: Body},
   {label: "ear", data: Ear},
   {label: "head", data: Head},
@@ -15,4 +15,4 @@ const Llama: AvatarModules[] = [
   {label: "hat", data: Hat},
 ]
 
-export default Llama;
+export default LlamaMeta;

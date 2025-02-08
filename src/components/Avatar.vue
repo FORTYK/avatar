@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="piece-picker-wrapper">
-      <PiecePicker @piece-picker-event="setPiece" v-for="module in Llama" :module="module"></PiecePicker>
+      <PiecePicker @piece-picker-event="setPiece" v-for="module in LlamaMeta" :module="module"></PiecePicker>
     </div>
     <hr>
     <SwatchPicker :swatches="backgroundSwatch" @swatch-picker-event="setBackgroundColor" />
@@ -25,7 +25,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import Llama from './common/Llama/LlamaMeta'
+import LlamaMeta from './common/Llama/LlamaMeta'
 </script>
 <script lang="ts">
 import PiecePicker from './PiecePicker.vue'
@@ -49,8 +49,8 @@ export default {
   mounted() {
     var target = document.getElementById('avatar');
 
-    for (let i = 0; i < Llama.length; i++) {
-      const piece = Llama[i];
+    for (let i = 0; i < LlamaMeta.length; i++) {
+      const piece = LlamaMeta[i];
       if (piece.data.length == 0) continue;
 
       const picked = new AvatarModule(piece.label, piece.data[0]);

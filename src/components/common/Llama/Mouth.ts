@@ -1,13 +1,16 @@
 import { type AvatarModuleMeta } from '../AvatarModuleMeta'
+import mouth from '/src/assets/mouth.svg';
 
-const head: AvatarModuleMeta[] = 
+
+const module: AvatarModuleMeta[] = 
 [
   {
-    src: 'src/assets/mouth.svg',
+    title: "regular",
+    src: mouth,
     y: 162,
     width: 39,
     height: 51
   }
 ];
 
-export default head;
+export default module;
