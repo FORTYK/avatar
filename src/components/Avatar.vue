@@ -21,7 +21,9 @@
     </div>
     <hr>
     <SwatchPicker :swatches="backgroundSwatch" @swatch-picker-event="setBackgroundColor" />
-    <div id="test"></div>
+    <div @click="randomize()">🔄</div>
+    <div id=" test">
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
