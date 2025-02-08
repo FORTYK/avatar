@@ -1,11 +1,12 @@
 <template>
   <div class="avatar-swatches">
-      <button v-for="(swatch, index) in swatches" :title="swatch.label" class="swatch" :style="{ backgroundColor: swatch.color }" @click="handleClick(index)"></button>
+    <button v-for="(swatch, index) in swatches" :title="swatch.label" class="swatch"
+      :style="{ backgroundColor: swatch.color }" @click="handleClick(index)"></button>
   </div>
 </template>
 <script lang="ts">
-import { PropType } from 'vue'
-import { Swatch } from './common/Swatch'
+import { type PropType } from 'vue'
+import { type Swatch } from './common/Swatch'
 
 export default {
   props: {
@@ -15,7 +16,8 @@ export default {
   },
   emits: ['swatch-picker-event'],
   methods: {
-    handleClick(index: Number) {
+    handleClick(index: number) {
+      if (this.swatches == undefined) return;
       this.$emit('swatch-picker-event', this.swatches[index]);
     }
   }
@@ -23,15 +25,15 @@ export default {
 </script>
 
 <style scoped>
-.avatar-swatches{
-  display:flex;
-  width:auto;
+.avatar-swatches {
+  display: flex;
+  width: auto;
   justify-content: flex-start;
   margin-top: 1rem;
   outline: 1px solid gray;
 }
 
-.swatch{
+.swatch {
   display: flex;
   width: 16px;
   height: 16px;
@@ -41,7 +43,7 @@ export default {
   border: none;
 }
 
-.swatch + .swatch{
+.swatch+.swatch {
   margin-left: 1px;
 }
 </style>

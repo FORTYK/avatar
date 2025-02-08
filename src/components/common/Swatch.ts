@@ -1,6 +1,6 @@
 export interface Swatch{
-    color: String,
-    type?: String,
-    label: String
+    color: string,
+    type?: string,
+    label: string
 }
   

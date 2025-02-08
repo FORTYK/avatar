@@ -1,4 +1,4 @@
-import { Swatch } from './Swatch';
+import { type Swatch } from './Swatch';
 
 const swatch: Swatch[] =
   [
