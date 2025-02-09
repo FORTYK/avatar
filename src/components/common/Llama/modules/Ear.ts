@@ -1,5 +1,5 @@
-import { type AvatarModuleMeta } from '../AvatarModuleMeta'
-import ears from '/src/assets/ears.svg';
+import { type AvatarModuleMeta } from '../../AvatarModuleMeta'
+import ears from '/src/assets/llama/ears.svg';
 
 const module: AvatarModuleMeta[] = 
 [

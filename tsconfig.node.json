@@ -7,5 +7,6 @@
     "types": ["node"],
     "noImplicitAny": true,
     "strictNullChecks": true,
+    "downlevelIteration": true
   }
 }

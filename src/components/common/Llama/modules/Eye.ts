@@ -1,7 +1,7 @@
-import { type AvatarModuleMeta } from '../AvatarModuleMeta'
-import curious from '/src/assets/curious.svg';
-import scheming from '/src/assets/scheming.svg';
-import tired from '/src/assets/tired.svg';
+import { type AvatarModuleMeta } from '../../AvatarModuleMeta'
+import curious from '/src/assets/llama/curious.svg';
+import scheming from '/src/assets/llama/scheming.svg';
+import tired from '/src/assets/llama/tired.svg';
 
 const module: AvatarModuleMeta[] = 
 [

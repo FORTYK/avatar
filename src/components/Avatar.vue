@@ -10,17 +10,27 @@
       </div>
     </div>
     <div class="piece-picker-wrapper">
-      <PiecePicker @piece-picker-event="setPiece" v-for="module in LlamaMeta" :module="module"></PiecePicker>
+      <PiecePicker @piece-picker-event="setPiece" v-for="module in Llama.modules" :module="module"></PiecePicker>
     </div>
     <hr>
-    <SwatchPicker :swatches="backgroundSwatch" @swatch-picker-event="setBackgroundColor" />
+
+    <div class="color-menu">
+      <div>
+        <label>background</label>
+        <SwatchPicker :swatches="backgroundSwatch" @swatch-picker-event="setBackgroundColor" />
+      </div>
+      <hr>
+      <div>
+        <label>llama color picker coming soon</label>
+      </div>
+    </div>
     <div @click="randomize()">🔄</div>
     <div id="test">
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-import LlamaMeta from './common/Llama/LlamaMeta'
+import Llama from './common/Llama/Llama'
 </script>
 <script lang="ts">
 import PiecePicker from './PiecePicker.vue'
@@ -41,21 +51,18 @@ export default {
     }
   },
   mounted() {
-    var target = document.getElementById('avatar');
+    const targetElement = document.getElementById('avatar');
 
-    for (let i = 0; i < LlamaMeta.length; i++) {
-      const module = LlamaMeta[i];
+    for (let i = 0; i < Llama.modules.length; i++) {
+      const module = Llama.modules[i];
       if (module.data.length == 0) continue;
 
       const picked = new AvatarModule(module.label, module.data[0]);
-
       this.avatar.push(picked);
 
       var el = document.createElement('object');
       el.setAttribute('id', `avatar-${module.label}`);
-      target?.appendChild(el);
-
-
+      targetElement?.appendChild(el);
     }
 
     this.randomize();
@@ -75,14 +82,18 @@ export default {
         this.avatarStyle.backgroundImage = swatch.color;
       }
     },
-    setPiece(part: AvatarModule, index: number) {
+    setPiece(piece: AvatarModule) {
       for (let i = 0; i < this.avatar.length; i++) {
-        if (this.avatar[i].label == part.label) this.avatar[i] = part;
+        if (this.avatar[i].label == piece.label) {
+          this.avatar[i] = piece;
+          break;
+        }
       }
 
       this.loadAvatar();
     },
     loadAvatar() {
+
       for (let i = 0; i < this.avatar.length; i++) {
         const module = this.avatar[i];
         const el = document.getElementById(`avatar-${module.label}`);
@@ -93,9 +104,25 @@ export default {
         el.setAttribute('height', String(module.meta.height));
       }
     },
+    changeColor() {
+      for (let i = 0; i < this.avatar.length; i++) {
+        const module = this.avatar[i];
+        const svg = document.getElementById(`avatar-${module.label}`).contentDocument;
+        if (!svg) continue;
+
+        var components = svg.getElementsByClassName(`${module.label}-primary`);
+        if (components.length == 0) continue;
+
+        console.log('object :>> ', components);
+
+        for (let i = 0; i < components.length; i++) {
+          components[i].setAttribute("fill", "#ff0000");
+        }
+      }
+    },
     randomize() {
-      for (let i = 0; i < LlamaMeta.length; i++) {
-        const module = LlamaMeta[i];
+      for (let i = 0; i < Llama.modules.length; i++) {
+        const module = Llama.modules[i];
         if (module.data.length == 0) continue;
 
         const randomPiece = Math.floor(Math.random() * module.data.length);
@@ -163,4 +190,10 @@ span.meta {
 }
 
 .piece-picker-wrapper {}
+
+.color-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
 </style>

@@ -1,7 +1,7 @@
-import { type AvatarModuleMeta } from '../AvatarModuleMeta'
-import hair from '/src/assets/hair.svg';
-import goofy from '/src/assets/goofy.svg';
-import village from '/src/assets/village.svg';
+import { type AvatarModuleMeta } from '../../AvatarModuleMeta'
+import hair from '/src/assets/llama/hair.svg';
+import goofy from '/src/assets/llama/goofy.svg';
+import village from '/src/assets/llama/village.svg';
 
 const module: AvatarModuleMeta[] = 
 [
@@ -15,9 +15,9 @@ const module: AvatarModuleMeta[] =
   {
     title: "goofy",
     src: goofy,
-    y: 90,
+    y: 95,
     width: 114,
-    height: 165
+    height: 161
   },
   {
     title: "village idiot",
