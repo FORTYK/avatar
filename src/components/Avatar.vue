@@ -5,13 +5,6 @@
       <div class="avatar-shape">
         <div class="avatar-background" :style="avatarStyle">
           <div class="avatar-wrapper" id="avatar">
-            <!--
-                <object :style="avatarBodyStyle" id="avatar-body"></object>
-                <object id="avatar-head" data="src/assets/head.svg" style="margin-top: 100px" width="96" height="156"></object>
-                <object id="avatar-hair" data="src/assets/hair.svg" style="margin-top: 100px" width="92" height="156"></object>
-                <object id="avatar-mouth" data="src/assets/mouth.svg" style="margin-top: 162px" width="39" height="51"></object>
-                <object :style="avatarEyesStyle" id="avatar-eyes"></object>
-              -->
           </div>
         </div>
       </div>
@@ -22,7 +15,7 @@
     <hr>
     <SwatchPicker :swatches="backgroundSwatch" @swatch-picker-event="setBackgroundColor" />
     <div @click="randomize()">🔄</div>
-    <div id=" test">
+    <div id="test">
     </div>
   </div>
 </template>
@@ -34,7 +27,6 @@ import PiecePicker from './PiecePicker.vue'
 import SwatchPicker from './SwatchPicker.vue'
 import SwatchBackground from './common/SwatchBackground'
 import { type Swatch } from './common/Swatch'
-import { AvatarModules } from './common/AvatarModules';
 import { AvatarModule } from './common/AvatarModule';
 
 export default {

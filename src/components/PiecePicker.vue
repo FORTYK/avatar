@@ -73,9 +73,10 @@ export default {
   height: 60px;
   width: 60px;
   opacity: 0;
+  cursor: pointer;
 }
 
 .piece:hover {
-  background-color: red;
+  background-color: #e3e3f8;
 }
 </style>
