@@ -21,7 +21,8 @@
       </div>
       <hr>
       <div>
-        <label>llama color picker coming soon</label>
+        <label>fur</label>
+        <SwatchPicker :swatches="SwatchFur" @swatch-picker-event="setFurColor" />
       </div>
     </div>
     <div @click="randomize()">🔄</div>
@@ -36,6 +37,7 @@ import Llama from './common/Llama/Llama'
 import PiecePicker from './PiecePicker.vue'
 import SwatchPicker from './SwatchPicker.vue'
 import SwatchBackground from './common/SwatchBackground'
+import SwatchFur from './common/SwatchFur'
 import { type Swatch } from './common/Swatch'
 import { AvatarModule } from './common/AvatarModule';
 
@@ -44,7 +46,8 @@ export default {
     return {
       avatarStyle: {
         backgroundColor: '#C38C8C',
-        backgroundImage: ''
+        backgroundImage: '',
+        furColor: SwatchFur[0]
       },
       avatar: [] as AvatarModule[],
       backgroundSwatch: SwatchBackground
@@ -55,6 +58,7 @@ export default {
 
     for (let i = 0; i < Llama.modules.length; i++) {
       const module = Llama.modules[i];
+      if (module.disabled) continue;
       if (module.data.length == 0) continue;
 
       const picked = new AvatarModule(module.label, module.data[0]);
@@ -82,6 +86,10 @@ export default {
         this.avatarStyle.backgroundImage = swatch.color;
       }
     },
+    setFurColor(swatch: Swatch) {
+      this.avatarStyle.furColor = swatch;
+      this.loadAvatar();
+    },
     setPiece(piece: AvatarModule) {
       for (let i = 0; i < this.avatar.length; i++) {
         if (this.avatar[i].label == piece.label) {
@@ -93,36 +101,36 @@ export default {
       this.loadAvatar();
     },
     loadAvatar() {
-
       for (let i = 0; i < this.avatar.length; i++) {
-        const module = this.avatar[i];
-        const el = document.getElementById(`avatar-${module.label}`);
+        const avatarModule = this.avatar[i];
+        const el = document.getElementById(`avatar-${avatarModule.label}`);
 
-        el.setAttribute('data', module.meta.src);
-        el.setAttribute('style', `position: absolute; z-index: ${i + 1}; margin-top: ${module.meta.y}px`);
-        el.setAttribute('width', String(module.meta.width));
-        el.setAttribute('height', String(module.meta.height));
+        el.setAttribute('data', avatarModule.meta.src);
+        el.setAttribute('style', `position: absolute; z-index: ${i + 1}; margin-top: ${avatarModule.meta.y}px`);
+        el.setAttribute('width', String(avatarModule.meta.width));
+        el.setAttribute('height', String(avatarModule.meta.height));
       }
+
+      setTimeout(() => this.changeColor(), 300);
     },
     changeColor() {
       for (let i = 0; i < this.avatar.length; i++) {
-        const module = this.avatar[i];
-        const svg = document.getElementById(`avatar-${module.label}`).contentDocument;
+        const avatarModule = this.avatar[i];
+        const svg = document.getElementById(`avatar-${avatarModule.label}`).contentDocument;
         if (!svg) continue;
 
-        var components = svg.getElementsByClassName(`${module.label}-primary`);
+        var components = svg.getElementsByClassName(`${avatarModule.label}-primary`);
         if (components.length == 0) continue;
 
-        console.log('object :>> ', components);
-
         for (let i = 0; i < components.length; i++) {
-          components[i].setAttribute("fill", "#ff0000");
+          components[i].setAttribute("fill", this.avatarStyle.furColor.color);
         }
       }
     },
     randomize() {
       for (let i = 0; i < Llama.modules.length; i++) {
         const module = Llama.modules[i];
+        if (module.disabled) continue;
         if (module.data.length == 0) continue;
 
         const randomPiece = Math.floor(Math.random() * module.data.length);

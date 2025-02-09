@@ -9,6 +9,13 @@ const module: AvatarModuleMeta[] =
     y: 30,
     width: 106,
     height: 91
+  },
+  {
+    title: "abomination",
+    src: "",
+    y: 30,
+    width: 106,
+    height: 91
   }
 ];
 

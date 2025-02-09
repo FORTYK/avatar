@@ -1,5 +1,5 @@
 <template>
-  <template v-if="module && module.data">
+  <template v-if="module && !module.disabled && module.data">
     <div class="piece-picker-wrapper">
       <div class="piece-picker">
         <button>
